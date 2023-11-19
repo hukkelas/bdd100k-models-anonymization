@@ -1,7 +1,7 @@
 """Dataset settings."""
 
 dataset_type = "BDD100KInsSegDataset"  # pylint: disable=invalid-name
-data_root = "../data/bdd100k/"  # pylint: disable=invalid-name
+data_root = "bdd100k/"  # pylint: disable=invalid-name
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True
 )
@@ -49,7 +49,7 @@ data = dict(
     train=dict(
         type=dataset_type,
         ann_file=data_root + "jsons/ins_seg_train_cocofmt.json",
-        img_prefix=data_root + "images/10k/val",
+        img_prefix=data_root + "images/10k/train",
         pipeline=train_pipeline,
     ),
     val=dict(

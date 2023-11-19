@@ -20,6 +20,8 @@ from mmdet.datasets import (
     build_dataset,
     replace_ImageToTensor,
 )
+from mmdet.utils import update_data_root
+
 from mmdet.models import build_detector
 
 MODEL_SERVER = "https://dl.cv.ethz.ch/bdd100k/ins_seg/models/"
@@ -106,6 +108,7 @@ def main() -> None:
     )
 
     cfg = Config.fromfile(args.config)
+    update_data_root(cfg)
     if cfg.load_from is None:
         cfg_name = os.path.split(args.config)[-1].replace(".py", ".pth")
         cfg.load_from = MODEL_SERVER + cfg_name
